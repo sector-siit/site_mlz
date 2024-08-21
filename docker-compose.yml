@@ -1,0 +1,15 @@
+services:
+  sitemlz:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: "${DOCKER_REGISTRY}/${IMAGE_NAME}:${IMAGE_TAG}"
+    container_name: sitemlz
+    ports:
+      - "80:3000"
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - HOSTNAME=intrasiit.lomasdezamora.gov.ar
+    volumes:
+      - ./sitemlz:/usr/src/app

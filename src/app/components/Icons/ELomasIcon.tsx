@@ -1,0 +1,9 @@
+import React from 'react'
+
+export default function ELomasIcon() {
+  return (
+    <svg width="30" height="28" viewBox="0 0 30 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M1.66667 4.00008V0.666748H28.3333V4.00008H1.66667ZM1.66667 27.3334V17.3334H0V14.0001L1.66667 5.66675H28.3333L30 14.0001V17.3334H28.3333V27.3334H25V17.3334H18.3333V27.3334H1.66667ZM5 24.0001H15V17.3334H5V24.0001ZM3.41667 14.0001H26.5833L25.5833 9.00008H4.41667L3.41667 14.0001Z" fill="white" />
+    </svg>
+  )
+}

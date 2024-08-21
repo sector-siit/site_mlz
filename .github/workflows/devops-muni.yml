@@ -1,0 +1,39 @@
+name: Deploy Jenkins MUNI
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+
+  Ejecutar-build-siitserver:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+
+    - uses: webiny/action-conventional-commits@v1.3.0
+      with:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Optional, for private repositories.
+        allowed-commit-types: "feat,fix" # Optional, set if you want a subset of commit types to be allowed.
+
+    - name: Setup-Zerotier
+      uses: zerotier/github-action@v1.0.1
+      with:
+        network_id: ${{ secrets.ZEROTIER_NETWORK_ID }}
+        auth_token: ${{ secrets.ZEROTIER_CENTRAL_TOKEN }}
+  
+    - name: Test_connection
+      shell: bash
+      run: |
+        count=10
+        while ! ping -c 10 ${{ secrets.SIIT_SERVER_IP }} ; do
+          echo "waiting..." ;
+          sleep 1 ;
+          let count=count-1
+        done
+        echo "ping success"
+
+    - name: execute jenkins whit api
+      shell: bash
+      run: "curl -X POST -u ${{ secrets.JENKINS_USER }}:${{ secrets.JENKINS_TOKEN }} ${{ secrets.JENKINS_BUILD_URL }}"
+

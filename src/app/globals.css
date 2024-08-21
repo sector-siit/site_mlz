@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+	font-family: 'geometria';
+	src: url('/fonts/geometria/geometria-bold.ttf') format('truetype');
+  font-weight: bold;
+}
+@font-face {
+	font-family: 'geometria';
+	src: url('/fonts/geometria/geometria.ttf') format('truetype');
+  font-weight: normal;
+}
