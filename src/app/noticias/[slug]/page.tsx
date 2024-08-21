@@ -12,9 +12,9 @@ import { noticiasData } from '@/mocks/noticiasMock';
 export async function generateStaticParams() {
   // esto en el otro no deberia ir
   return [
-    { slug: 'jornada-deportiva-y-ambiental-en-llavallol-bicicleteada-y-senderismo-en-el-municipio-de-lomas-de-zamora' },
-    { slug: 'diversion-y-aprendizaje-en-las-vacaciones-de-invierno-en-lomas' },
-    { slug: 'jornada-de-examenes-visuales-en-el-hospital-oftalmologico' },
+    { id: '1' },
+    { id: '2' },
+    { id: '3' },
   ];
 }
 
@@ -23,10 +23,10 @@ const truncarTexto = (texto: string) => {
 }
 
 
-export default function Page({ params }: { params: { slug: string } }) {
+export default function Page({params}: {params: {slug: string}}) {
 
   const { slug } = params;
-
+ 
   const getNoticia = (slug: string | string[]) => {
     return noticiasData.find((noti) => noti.slug === slug)
   }
